@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conseils de Sécurité - Restez en Sécurité !</title>
+    <style>
+       /* General */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f3f8ff;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-image: url('jellyfish2.gif'); /* Add your jellyfish gif here */
+    background-size: cover; /* This ensures the image covers the entire background */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-position: center; /* Centers the background */
+    padding-top: 70px; /* Fixed navbar height */
+}
+
+header {
+    background-color: #2980b9;
+    padding: 20px;
+    text-align: center;
+    color: white;
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin: 0;
+}
+
+header p {
+    font-size: 1.2em;
+    margin-top: 10px;
+}
+
+span {
+    font-weight: bold;
+}
+
+section.tips {
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-top: 30px;
+}
+
+/* Tip box styles */
+.tip {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+}
+
+.tip h2 {
+    font-size: 1.5em;
+    color: #81c5f3;
+}
+
+.tip p {
+    font-size: 1.1em;
+    line-height: 1.6em;
+    color: #ecf6fc; /* Lighter text for contrast on dark background */
+}
+
+footer {
+    background-color: #2980b9;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    margin-top: 40px;
+    font-size: 1.2em;
+}
+
+footer p {
+    font-size: 1.2em;
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: #1d6f96;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.navbar .brand {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.navbar .nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    margin: 0 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.navbar .nav-links a:hover {
+    background-color:  #87c6f0;
+}
+
+.navbar .nav-links a:active {
+    background-color:  #87c6f0;
+}
+
+/* Ocean Style */
+header h1 {
+    font-size: 2.8em;
+}
+
+header p {
+    font-size: 1.3em;
+}
+
+.tip h2 {
+    font-size: 1.7em;
+    color: #87c6f0;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.tip p {
+    font-size: 1.1em;
+    line-height: 1.6em;
+    color: #ecf6fc;
+}
+
+/* Fish, octopus, and ocean emojis */
+.ocean-style {
+    font-size: 2em;
+}
+
+.ocean-style span {
+    margin-right: 10px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 2em;
+    }
+
+    header p {
+        font-size: 1.1em;
+    }
+
+    section.tips {
+        padding: 15px;
+    }
+
+    .tip h2 {
+        font-size: 1.2em;
+    }
+
+    .tip p {
+        font-size: 1em;
+    }
+
+    footer p {
+        font-size: 1em;
+    }
+
+    .navbar .nav-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar .nav-links a {
+        margin: 10px 0;
+    }
+}
+
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="brand">Hackers Cry Zone </div>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/contact">Contact Us</a>
+            <a href="/nuitdinfo">Nuit d'Info</a>
+            <a href="/security-tips">Conseils</a>
+            <a href="/myths" style="color: transparent; background-color: transparent; text-decoration: none; pointer-events: auto;">myths</a>
+
+        </div>
+    </div>
+
+    <header>
+        <h1>🚨 <span>Conseils de Sécurité</span> 🛡️</h1>
+        <p>Restez en sécurité et évitez les mauvaises surprises avec ces conseils simples, mais importants ! 🐙</p>
+    </header>
+
+    <section class="tips" id="security-tips">
+        <div class="tip">
+            <h2>🛠️ Mettez à jour vos logiciels !</h2>
+            <p>Ne soyez pas l'ami du <em>malware</em> ! Quand une mise à jour arrive, acceptez-la. Oui, même si vous avez une réunion dans 10 minutes. Les mises à jour corrigent des failles de sécurité, et ces failles sont souvent les portes d'entrée des pirates 🦑.</p>
+        </div>
+
+        <div class="tip">
+            <h2>🚫 Ne cliquez pas sur les liens douteux !</h2>
+            <p>Les <em>phishers</em> adorent les liens douteux. Si vous recevez un email avec un lien de "votre banque", demandez-vous si vous avez vraiment une banque en ligne (et vérifiez l'URL avant de cliquer) 🐡 !</p>
+        </div>
+
+        <div class="tip">
+            <h2>📂 N'ouvrez pas de fichiers suspects !</h2>
+            <p>Les pièces jointes dans les emails peuvent contenir des malwares. N'ouvrez pas de fichiers que vous n'attendiez pas ! Si l'email dit "Coucou, regarde ce fichier trop cool !" et que vous ne connaissez pas la personne, c'est un bon moment pour supprimer ce message 🦀.</p>
+        </div>
+
+        <div class="tip">
+            <h2>💾 Ne branchez pas n'importe quelle clé USB !</h2>
+            <p>Une clé USB trouvée dans la rue pourrait être une <em>bombe informatique</em> 🐙. Si vous trouvez une clé USB, ne la branchez pas dans votre PC. On ne sait jamais... ça pourrait être un cadeau de l'ennemi 🐡 !</p>
+        </div>
+
+        <div class="tip">
+            <h2>💾 Sauvegardez vos données !</h2>
+            <p>En cas de ransomware, la sauvegarde est votre <em>super-héros</em> 🦑. Si vos fichiers sont cryptés, une sauvegarde à jour pourrait vous sauver la mise ! Faites-le régulièrement et à plusieurs endroits (cloud et disque dur externe, ça marche bien) 🐠.</p>
+        </div>
+
+        <div class="tip">
+            <h2>🛡️ Antivirus : Toujours à jour !</h2>
+            <p>Un antivirus est comme un super-héros 🦸‍♂️, mais un super-héros un peu fatigué si vous ne le mettez pas à jour. Il doit être toujours actif et prêt à défendre votre ordinateur contre les menaces 🦑.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>Les hackers sont comme des méduses – ils piquent quand on s'y attend le moins ! 🦑</p>
+    </footer>
+
+</body>
+</html>

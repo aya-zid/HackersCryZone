@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Cyberattaque: Pensez Comme un Hacker</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            background-color: #f0f4f8;
+        }
+
+        /* Animated wavy background */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1e90ff, #87ceeb);
+            clip-path: polygon(0% 25%, 100% 10%, 100% 90%, 0% 75%);
+            animation: wave 6s infinite alternate ease-in-out;
+            z-index: -2;
+        }
+
+        body::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(30, 144, 255, 0.7), rgba(135, 206, 235, 0.7));
+            clip-path: polygon(0% 15%, 100% 30%, 100% 70%, 0% 85%);
+            animation: wave 8s infinite alternate-reverse ease-in-out;
+            z-index: -1;
+        }
+
+        @keyframes wave {
+            0% {
+                clip-path: polygon(0% 25%, 100% 10%, 100% 90%, 0% 75%);
+            }
+            100% {
+                clip-path: polygon(0% 30%, 100% 15%, 100% 85%, 0% 70%);
+            }
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            width: 85%;
+            max-width: 800px;
+            text-align: center;
+            animation: fadeIn 1s ease-out;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            color: #1e90ff;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            color: #007bff;
+            font-size: 1.8rem;
+            margin-top: 20px;
+        }
+
+        .step {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            background: #f9f9f9;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0;
+        }
+
+        ul li {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        section {
+            display: none;
+        }
+
+        #step1 {
+            display: block;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(90deg, #1e90ff, #007bff);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            margin: 0 15px;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .navbar a:hover {
+            color: #ffd700;
+        }
+
+        .navbar-brand {
+            font-size: 22px;
+            font-weight: 600;
+            color: #fff;
+        }
+
+    </style>   
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="navbar-brand">Hackers Cry Zone</div>
+        <div>
+            <a href="/">Home</a>
+            <a href="/contact">Contact Us</a>
+            <a href="/nuitdinfo">Nuit d'Info</a>
+            <a href="/security-tips">Conseils</a>
+            <a href="/myths" style="color: transparent; background-color: transparent; text-decoration: none; pointer-events: auto;">myths</a>
+
+        </div>
+    </div>
+
+    <!-- Content Section -->
+    <div class="container">
+        <header>
+            <h1>La Cyberattaque: Pensez Comme un Hacker</h1>
+            <p>Découvrez les étapes d'une cyberattaque et comment un hacker pense.</p>
+        </header>
+
+        <!-- Step 1: Reconnaissance -->
+        <section id="step1">
+            <h2>1. Reconnaissance : Observer et Collecter</h2>
+            <div class="step">
+                <p>La reconnaissance est la première étape où le hacker collecte des informations sur sa cible.</p>
+                <ul>
+                    <li>Recherche d'informations accessibles (OSINT).</li>
+                    <li>Identification des points faibles possibles.</li>
+                </ul>
+                <button onclick="nextStep('step2')">Suivant</button>
+            </div>
+        </section>
+
+        <!-- Step 2: Weaponization -->
+        <section id="step2">
+            <h2>2. Weaponization : Créer l’Arme</h2>
+            <div class="step">
+                <p>L’attaquant prépare son "arme", souvent un malware, pour l'attaque.</p>
+                <ul>
+                    <li>Création ou achat de logiciels malveillants.</li>
+                    <li>Exploitation des failles de sécurité.</li>
+                </ul>
+                <button onclick="nextStep('step3')">Suivant</button>
+            </div>
+        </section>
+
+        <!-- Step 3: Delivery -->
+        <section id="step3">
+            <h2>3. Delivery : Transmettre l’Arme</h2>
+            <div class="step">
+                <p>Le hacker livre son malware à la cible par différents moyens.</p>
+                <ul>
+                    <li>Phishing via email.</li>
+                    <li>Utilisation d’USB infectés.</li>
+                </ul>
+                <button onclick="nextStep('step4')">Suivant</button>
+            </div>
+        </section>
+
+        <!-- Step 4: Exploitation -->
+        <section id="step4">
+            <h2>4. Exploitation : Profiter de la Faille</h2>
+            <div class="step">
+                <p>Une fois le malware activé, le hacker exploite les failles pour prendre le contrôle.</p>
+                <ul>
+                    <li>Accès aux données sensibles.</li>
+                    <li>Exécution du code malveillant.</li>
+                </ul>
+                <button onclick="nextStep('end')">Terminer</button>
+            </div>
+        </section>
+
+        <!-- Final Section: Conclusion -->
+        <section id="end">
+            <h2>Leçon à Retenir</h2>
+            <p>Comprendre ces étapes est essentiel pour se protéger contre les cyberattaques. Restez vigilant et utilisez des outils de sécurité pour contrer chaque phase d’une attaque.</p>
+        </section>
+    </div>
+
+    <script>
+        function nextStep(stepId) {
+            const currentStep = document.querySelector('section:not([style*="display: none"])');
+            const nextStep = document.getElementById(stepId);
+
+            if (currentStep) {
+                currentStep.style.display = 'none';
+            }
+
+            if (nextStep) {
+                nextStep.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>

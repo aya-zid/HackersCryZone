@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacter nous</title>
+    <style>
+        /* Set the ocean.gif as the full-page background */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('ocean2.gif') no-repeat center center fixed;
+            background-size: cover;
+            overflow: hidden;
+            flex-direction: column;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(90deg, #1e90ff, #007bff);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            margin: 0 15px;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .navbar a:hover {
+            color: #ffd700;
+        }
+
+        .navbar-brand {
+            font-size: 22px;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        /* Contact Form Styles */
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px; /* Reduced padding for smaller form height */
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            margin-top: 50px; /* Reduced margin-top for smaller space between navbar and form */
+        }
+
+        h1 {
+            color: #1e90ff;
+            font-size: 1.8rem; /* Slightly smaller font size */
+            margin-bottom: 15px; /* Reduced margin */
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        input, textarea {
+            width: 80%;
+            padding: 8px; /* Reduced padding */
+            margin: 8px 0; /* Reduced margin */
+            border-radius: 8px;
+            border: 1px solid #1e90ff;
+            font-size: 16px;
+        }
+
+        button {
+            background: linear-gradient(90deg, #1e90ff, #007bff);
+            color: white;
+            padding: 10px 20px; /* Reduced padding */
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background 0.3s ease-in-out;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        button:hover {
+            background: linear-gradient(90deg, #007bff, #1e90ff);
+        }
+
+        button:active {
+            transform: translateY(2px);
+        }
+    </style>   
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="navbar-brand">Hackers Cry Zone</div>
+        <div>
+            <a href="/">Home</a>
+            <a href="/contact">Contact Us</a>
+            <a href="/nuitdinfo">Nuit d'Info</a>
+            <a href="/security-tips">Conseils</a>
+            <a href="/myths" style="color: transparent; background-color: transparent; text-decoration: none; pointer-events: auto;">myths</a>
+
+        </div>
+    </div><br/>
+
+    <!-- Contact Form -->
+    <div class="container">
+        <h1>Contactez-nous</h1>
+        <p>Si vous avez besoin d'aide ou si vous rencontrez des problèmes, contactez-nous via ce formulaire.</p>
+        <form id="contactForm">
+            <div class="form-group">
+                <label for="email">Adresse e-mail:</label>
+                <input type="email" id="email" placeholder="Votre e-mail" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="subject">Objet:</label>
+                <input type="text" id="subject" placeholder="Objet du message" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="message">Votre message:</label>
+                <textarea id="message" rows="4" placeholder="Votre message" required></textarea> <!-- Reduced rows for textarea -->
+            </div>
+            
+            <button type="submit">Envoyer</button>
+        </form>
+    </div>
+<script src="bundle.js"></script>
+</body>
+</html>

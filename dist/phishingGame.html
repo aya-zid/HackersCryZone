@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test de Phishing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="phishing.css">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: url('ocean.gif') no-repeat center center fixed; 
+    background-size: cover; /* Ensures the GIF covers the whole screen */
+    margin: 0;
+    padding: 0;
+            color: #333;
+        }
+
+        nav {
+            background-color: #2866ca;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            font-size: 24px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .instructions {
+            flex: 1;
+            margin-right: 20px;
+            font-size: 18px;
+            line-height: 1.6;
+            color: #2866ca;
+        }
+
+        .email-card {
+    flex: 2;
+    background: #ddd8d8;
+    padding: 30px;
+    border-radius: 12px; /* Slightly more rounded corners */
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15), 0 6px 10px rgba(0, 0, 0, 0.1); /* More depth to the shadows */
+    border: 4px solid #041528; /* Blue border, change color as needed */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; /* Smooth transitions */
+}
+
+.email-card:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2), 0 12px 18px rgba(0, 0, 0, 0.1); /* Stronger shadow on hover */
+    border-color: #0056b3; /* Darker blue on hover */
+}
+
+
+
+        .email-card:hover {
+            transform: scale(1.02);
+        }
+
+        .actions {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .actions button {
+            margin: 10px;
+            padding: 12px 25px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #2866ca;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+
+        .actions button:hover {
+            background-color: #256096;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 2px solid #256096;
+            padding-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 16px;
+        }
+
+        .details {
+            display: none;
+            background-color: #f1f8e9;
+            padding: 12px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .header:hover .details {
+            display: block;
+        }
+
+        .email-content {
+            padding: 20px 0;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        .email-content a {
+            color: #0288d1;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .email-content a:hover {
+            text-decoration: underline;
+            color: #01579b;
+        }
+
+        .attacker-section {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            margin-top: 20px;
+        }
+
+        #attacker-image {
+            width: 160px;
+            margin-bottom: 15px;
+        }
+
+        .emoji-top-right {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            font-size: 40px;
+        }
+
+        /* Popup Styles */
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .popup.hidden {
+            display: none;
+        }
+
+        .popup-content {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            max-width: 450px;
+            position: relative;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .popup-content img {
+            width: 100%;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .popup-content h2 {
+            margin-top: 0;
+            color: #2866ca;
+        }
+
+        .popup-content .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .popup-content .close-popup {
+            margin-top: 20px;
+            padding: 12px 25px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #2866ca;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+
+        .popup-content .close-popup:hover {
+            background-color: #2866ca;
+        }
+
+        /* Fade-in Animation */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        .attacker-section {
+    flex: 1;
+    text-align: center;
+    position: relative;
+    margin-top: 20px;
+}
+
+#attacker-image {
+    width: 150px;
+    margin-bottom: 10px;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px); /* Moves the image up */
+    }
+    100% {
+        transform: translateY(0); /* Moves back to the original position */
+    }
+}
+/* Navbar Styles */
+.navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(90deg, #1e90ff, #007bff);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            margin: 0 15px;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .navbar a:hover {
+            color: #ffd700;
+        }
+
+        .navbar-brand {
+            font-size: 22px;
+            font-weight: 600;
+            color: #fff;
+        }
+
+    </style>
+</head>
+<body>
+<!-- Navbar -->
+<div class="navbar">
+    <div class="navbar-brand">Phishing Info</div>
+    <div>
+        <a href="/">Home</a>
+            <a href="/contact">Contact Us</a>
+            <a href="/nuitdinfo">Nuit d'Info</a>
+            <a href="/security-tips">Conseils</a>
+            <a href="/myths" style="color: transparent; background-color: transparent; text-decoration: none; pointer-events: auto;">myths</a>
+
+
+    </div>
+</div>
+    <div class="instructions">
+        <p style="text-align: center;">
+            Prenez un moment pour examiner l'email ci-dessous et décidez s'il s'agit d'un email de phishing ou s'il semble sûr.
+        </p>
+        
+    </div>
+    <div class="container">
+        <div class="instructions">
+
+        </div>
+        <div class="email-card">
+
+            <div class="header">
+                <p><strong>Google Support &lt;support@google.com&gt;</strong></p>
+                <p>à moi <span class="arrow">▼</span></p>
+                <div class="details">
+                    <p><strong>De :</strong> support@google.com</p>
+                    <p><strong>À :</strong> user@hackercryzone.com</p>
+                    <p><strong>Objet :</strong> Réinitialisation du mot de passe requise</p>
+                </div>
+            </div>
+            <div class="email-content">
+                <p style="border: 1px solid #021122; padding: 15px; border-radius: 8px; background-color: #f9f9f9;">
+                    Bonjour, <br><br>
+                    Il est porté à notre attention que votre compte peut avoir été consulté par un tiers. Veuillez vous connecter et modifier votre mot de passe ici : 
+                    <a href="https://myaccount.googlesupport.com/signinoptions/password" >
+                        https://myaccount.google.com/signinoptions/password
+                    </a> 
+                    <br><br>
+                    Merci,<br>
+                    Google Support
+                </p>
+            </div>
+            
+            <div class="actions">
+                <button onclick="handleAnswer(false)">Email sécurisé</button>
+                <button onclick="handleAnswer(true)">Email non sécurisé</button>
+            </div>
+        </div>
+        
+        <div class="attacker-section">
+            <div class="emoji-top-right" id="emoji">🕵️‍♂️</div>
+            <img src="attacker.png" alt="Attacker" id="attacker-image">
+            <p id="attacker-message" class="attacker-message"></p>
+        </div>
+    </div>
+
+    <!-- Custom Popup -->
+    <div id="popup" class="popup hidden">
+        <div class="popup-content">
+            <span class="close-btn" onclick="closePopup()">×</span>
+            <h2 id="popup-title"></h2>
+            <p id="popup-message"></p>
+            <img id="popup-image" src="capture1.png" alt="Capture d'écran de l'email">
+        </div>
+    </div>
+
+    <script>
+        function handleAnswer(isPhishing) {
+            const emojiElement = document.getElementById("emoji");
+            const popup = document.getElementById("popup");
+            const popupTitle = document.getElementById("popup-title");
+            const popupMessage = document.getElementById("popup-message");
+            const popupImage = document.getElementById("popup-image");
+            const attackerMessage = document.getElementById("attacker-message");
+
+            if (isPhishing) {
+                // Correct answer
+                emojiElement.textContent = "😭"; // Crying emoji
+                attackerMessage.innerHTML = "hacker pleure !";
+                popupTitle.textContent = "Bonne réponse !";
+                popupMessage.textContent = 
+                    "Cet email est un phishing car le lien redirige vers un site différent de celui annoncé. En survolant le lien, vous verrez qu'il s'agit de googlesupport.com au lieu de google.com.";
+                popupImage.src = "capture1.png";
+            } else {
+                // Wrong answer
+                emojiElement.textContent = "😈";  // Devilish emoji for phishing
+            attackerMessage.innerHTML = "Hacker content ! "; // Updated message
+            attackerMessage.style.cssText = `
+                color: white;
+                padding: 5px;
+                margin: 8px 0;
+                border-radius: 5px;
+                font-size: 18px;
+                font-weight: bold;
+                text-align: center;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            `;
+                popupTitle.textContent = "Mauvaise réponse.";
+                popupMessage.textContent = 
+                    "Ce n'est pas un email sûr, c'est un phishing. L'URL du lien et l'adresse de l'expéditeur sont suspectes.";
+                popupImage.src = "capture1.png";
+            }
+
+            popup.classList.remove("hidden");
+        }
+
+        function closePopup() {
+            document.getElementById("popup").classList.add("hidden");
+        }
+    </script>
+</body>
+</html>

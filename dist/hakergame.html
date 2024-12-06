@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Cyberattaque: Pensez Comme un Hacker</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #cce7ff;
+            color: #333;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #0077b6;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar .brand {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .navbar .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            margin: 0 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .navbar .nav-links a:hover {
+            background-color: #005f8d;
+        }
+
+        /* Ocean-themed container */
+        .container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container h1 {
+            font-size: 2.5em;
+            margin: 20px 0;
+        }
+
+        /* Display steps horizontally using flex */
+        .password-options {
+            display: flex;
+            justify-content: center; /* Center align the steps */
+            gap: 20px; /* Space between each option */
+            flex-wrap: wrap; /* Allow wrapping if the screen is too small */
+            margin-top: 20px;
+        }
+
+        .step {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            width: 200px;
+            text-align: center;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s;
+            margin: 10px;
+        }
+
+        .step:hover {
+            transform: scale(1.1);
+        }
+
+        .step span {
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .result {
+            margin-top: 30px;
+            font-size: 1.5em;
+            display: none;
+        }
+
+        .result img {
+            width: 150px;
+            margin: 20px;
+        }
+
+        .emoji {
+            font-size: 2em;
+            vertical-align: middle;
+            margin-left: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0077b6;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        /* Ocean effect */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://image.shutterstock.com/image-photo/stock-photo-blue-ocean-waves-250nw-1423797981.jpg') no-repeat center center;
+            background-size: cover;
+            opacity: 0.2;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="brand">Hackers Cry Zone</div>
+        <div class="nav-links">
+            <a href="/">🏠 Home</a>
+            <a href="#game">🎮 Jeu</a>
+            <a href="/contact">📩 Contact</a>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <h1>🐟 La Cyberattaque: Pensez Comme un Hacker 🦑</h1>
+        <p>Dans quelle étape un hacker utilise-t-il OSINT (Open Source Intelligence) ?</p>
+        <div class="password-options" id="password-options">
+            <!-- Steps will be dynamically loaded here -->
+        </div>
+        <div class="result" id="result">
+            <p id="result-message"></p>
+            <img id="attacker-image" src="attacker.png" alt="Attacker">
+            <span class="emoji" id="emoji"></span>
+        </div>
+    </div>
+
+    <footer>
+        <p>Restez vigilant et utilisez des outils de sécurité ! 🌊</p>
+    </footer>
+
+    <script>
+        // Step options and the correct one
+        const steps = [
+            { text: "Reconnaissance", correct: true },
+            { text: "Weaponization", correct: false },
+            { text: "Delivery", correct: false },
+            { text: "Exploitation", correct: false }
+        ];
+
+        // Load steps into the DOM
+        const optionsContainer = document.getElementById('password-options');
+        steps.forEach(step => {
+            const card = document.createElement('div');
+            card.classList.add('step');
+            card.innerHTML = `<span>${step.text}</span>`;
+            card.addEventListener('click', () => checkStep(step.correct));
+            optionsContainer.appendChild(card);
+        });
+
+        // Check if the selected step is correct
+        function checkStep(isCorrect) {
+            const result = document.getElementById('result');
+            const message = document.getElementById('result-message');
+            const emoji = document.getElementById('emoji');
+            result.style.display = 'block';
+
+            if (isCorrect) {
+                message.textContent = "Bravo! Vous avez trouvé la bonne étape! 🥳";
+                emoji.textContent = "😭"; // Crying emoji
+            } else {
+                message.textContent = "Dommage! Le hacker a gagné cette fois... 👹";
+                emoji.textContent = "😈"; // Devil emoji
+            }
+        }
+    </script>
+</body>
+</html>

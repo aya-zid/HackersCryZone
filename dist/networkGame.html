@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Public Network Safety</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: url('ocean.gif') no-repeat center center fixed; 
+            display: flex;
+            background-size: cover;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            color: white;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-top: 80px; /* Ensure the title is not hidden by the navbar */
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 2px solid #00bcd4;
+            border-radius: 10px;
+            color: #ffffff;
+            text-shadow: 0 0 5px #00bcd4, 0 0 10px #00bcd4, 0 0 15px #00bcd4, 0 0 20px #bab0b5, 0 0 30px #c9bfc4, 0 0 40px #d7d0d4, 0 0 50px #c9c2c6;
+            box-shadow: 0 0 10px #00bcd4, 0 0 20px #00bcd4, 0 0 30px #b9b6b8;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(90deg, #1e90ff, #007bff);
+            padding: 10px 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            margin: 0 15px;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .navbar a:hover {
+            color: #ffd700;
+        }
+
+        .navbar-brand {
+            font-size: 22px;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .checkbox-container {
+            text-align: left;
+            margin: 20px;
+            padding: 10px;
+            background-color: transparent;
+            border-radius: 8px;
+            width: auto;
+            max-width: 250px;
+            border: 2px solid #00bcd4;
+            box-shadow: 0 0 10px #00bcd4, 0 0 20px #fbfafb, 0 0 30px #faf9f9;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .checkbox-container:hover {
+            box-shadow: 0 0 20px #00bcd4, 0 0 30px #f9f7f8, 0 0 40px #f7f5f6;
+            border-color: #f1edef;
+        }
+
+        label {
+            display: block;
+            font-size: 1.1rem;
+            color: #eff5f4;
+            margin: 8px 0;
+            cursor: pointer;
+            position: relative;
+            padding-left: 25px;
+            transition: color 0.3s ease;
+        }
+
+        input[type="checkbox"] {
+            position: absolute;
+            left: -9999px;
+        }
+
+        input[type="checkbox"] + span {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 16px;
+            height: 16px;
+            background-color: #eef4f4;
+            border: 2px solid #031b28;
+            border-radius: 4px;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        input[type="checkbox"]:checked + span {
+            background-color: #021728;
+            border-color: #031827;
+        }
+
+        #sendBtn {
+            background: #00BFFF;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        #sendBtn:hover {
+            background: #1E90FF;
+        }
+
+        #videoPlayer {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            background: black;
+            margin-bottom: 20px;
+        }
+
+        /* Footer Styles */
+        .footer {
+            width: 100%;
+            background: linear-gradient(90deg, #1e90ff, #007bff);
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: auto; /* Push footer to bottom */
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .footer p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .footer a {
+            color: #ffd700;
+            text-decoration: none;
+            font-size: 14px;
+            margin: 0 10px;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .footer a:hover {
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-brand">Hackers Cry Zone</div>
+        <div>
+            <a href="/">Home</a>
+            <a href="/contact">Contact Us</a>
+            <a href="/nuitdinfo">Nuit d'Info</a>
+            <a href="/security-tips">Conseils</a>
+            <a href="/myths">Myths</a>
+        </div>
+    </div>
+
+    <h1>L'interception de trafic</h1>
+
+    <div class="checkbox-container">
+        <label>
+            <input type="checkbox" id="vpn">
+            <span></span><b> VPN </b>
+        </label>
+        <label>
+            <input type="checkbox" id="https">
+            <span></span><b> HTTP</b>S
+        </label>
+        <center><button id="sendBtn">Envoyer</button></center>
+    </div>
+
+    <video id="videoPlayer" muted>
+        <source id="videoSource" src="" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <footer class="footer">
+        <p>&copy; 2024 Hackers Cry Zone | "Les hackers : ils essayent si fort, mais on rigole encore plus fort !"</p>
+    </footer>
+
+    <script>
+        const vpnCheckbox = document.getElementById('vpn');
+        const httpsCheckbox = document.getElementById('https');
+        const sendBtn = document.getElementById('sendBtn');
+        const videoPlayer = document.getElementById('videoPlayer');
+        const videoSource = document.getElementById('videoSource');
+
+        const videos = {
+            vpnChecked: 'VPNnoHTTPS.mp4',
+            httpsChecked: 'noVPNyesHTTPS.mp4',
+            bothChecked: 'VPNHTTPS.mp4',
+            noneChecked: 'noVPNnoHTTPS.mp4'
+        };
+
+        sendBtn.addEventListener('click', () => {
+            let videoToPlay = '';
+
+            if (vpnCheckbox.checked && httpsCheckbox.checked) {
+                videoToPlay = videos.bothChecked;
+            } else if (vpnCheckbox.checked) {
+                videoToPlay = videos.vpnChecked;
+            } else if (httpsCheckbox.checked) {
+                videoToPlay = videos.httpsChecked;
+            } else {
+                videoToPlay = videos.noneChecked;
+            }
+
+            videoSource.src = videoToPlay;
+            videoPlayer.load();
+            videoPlayer.play();
+        });
+    </script>
+</body>
+</html>

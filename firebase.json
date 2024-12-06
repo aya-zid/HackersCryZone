@@ -1,0 +1,83 @@
+{
+  "hosting": {
+    "public": "dist", 
+    "rewrites": [
+      {
+        "source": "/contact",
+        "destination": "/contact.html"
+      },
+      {
+        "source": "/phishing",
+        "destination": "/phishing.html"
+      },
+      {
+        "source": "/404",
+        "destination": "/404.html"
+      },
+      {
+        "source": "/security-tips",
+        "destination": "/securitytips.html"
+      }
+      ,
+      {
+        "source": "/nuitdinfo",
+        "destination": "/nuitd'info.html"
+      },
+      {
+        "source": "/passwordgame",
+        "destination": "/passwordgame.html"
+      },
+      {
+        "source": "/passwords",
+        "destination": "/password.html"
+      },
+      {
+        "source": "/public-network",
+        "destination": "/network.html"
+      },
+      {
+        "source": "/public-network-game",
+        "destination": "/networkGame.html"
+      },
+      {
+        "source": "/phishing-game",
+        "destination": "/phishingGame.html"
+      },
+      {
+        "source": "/think-like-a-hacker",
+        "destination": "/thinklikeahacker.html"
+      },
+      {
+        "source": "/hacker-game",
+        "destination": "/hakergame.html"
+      },
+      {
+        "source": "/myths",
+        "destination": "/myths.html"
+      },
+      {
+        "source": "/backup",
+        "destination": "/backup.html"
+      },
+      {
+        "source": "/update",
+        "destination": "/updates.html"
+      },
+      {
+        "source": "/backup-game",
+        "destination": "/backupGame.html"
+      },
+      {
+        "source": "/update-game",
+        "destination": "/updatesGame.html"
+      }
+    ],
+    "cleanUrls": true,
+    "trailingSlash": false,
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

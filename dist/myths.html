@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mythes en Cybersécurité</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background: url('sec.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .title-container {
+            background-color: black;
+            padding: 20px;
+            border-radius: 15px;
+            display: inline-block;
+            box-shadow: 0 0 20px 5px white, 0 0 30px 10px rgba(255, 255, 255, 0.8);
+            text-align: center;
+            margin: 0 auto;
+            margin-bottom: 40px;
+        }
+
+        .title-container h1 {
+            color: white;
+            font-size: 2.5rem;
+        }
+
+        .myths-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .myth-card {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
+        }
+
+        .myth-card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .myth-card h2.myth {
+            color: red;
+        }
+
+        .myth-card h2.truth {
+            color: green;
+        }
+
+        .myth-card p {
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        .separator {
+            height: 2px;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, white 50%, rgba(255, 255, 255, 0) 100%);
+            margin: 20px 0;
+            border-radius: 1px;
+        }
+
+        @media (max-width: 768px) {
+            .myths-container {
+                grid-template-columns: 1fr;
+            }
+
+            .title-container h1 {
+                font-size: 2rem;
+            }
+
+            .myth-card h2 {
+                font-size: 1.3rem;
+            }
+
+            .myth-card p {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title-container">
+            <h1>Mythes en Cybersécurité<br>Que Vous Croyez Encore</h1>
+        </div>
+
+        <div class="myths-container">
+            <div class="myth-card">
+                <h2 class="myth">Mythe</h2>
+                <p>Seules les grandes entreprises sont ciblées par les cyberattaques.</p>
+                <div class="separator"></div>
+                <h2 class="truth">Vérité</h2>
+                <p>Les entreprises de toutes tailles sont ciblées. Les petites entreprises, avec moins de ressources et de défenses plus faibles, sont souvent des cibles plus faciles.</p>
+            </div>
+
+            <div class="myth-card">
+                <h2 class="myth">Mythe</h2>
+                <p>Ne jamais cliquer sur un lien suspect suffit pour se protéger.</p>
+                <div class="separator"></div>
+                <h2 class="truth">Vérité</h2>
+                <p>Les attaques par phishing deviennent de plus en plus sophistiquées, rendant leur identification difficile. Même les utilisateurs avertis peuvent être dupés.</p>
+            </div>
+
+            <div class="myth-card">
+                <h2 class="myth">Mythe</h2>
+                <p>Un logiciel antivirus suffit pour se protéger.</p>
+                <div class="separator"></div>
+                <h2 class="truth">Vérité</h2>
+                <p>Un antivirus est essentiel mais insuffisant. Une stratégie de sécurité robuste inclut aussi des pare-feu, des mises à jour et une formation des employés.</p>
+            </div>
+
+            <div class="myth-card">
+                <h2 class="myth">Mythe</h2>
+                <p>Vos données personnelles sont en sécurité sur vos appareils personnels.</p>
+                <div class="separator"></div>
+                <h2 class="truth">Vérité</h2>
+                <p>Les appareils personnels sont aussi vulnérables que les systèmes professionnels. Utilisez des logiciels de sécurité à jour et évitez les Wi-Fi publics non sécurisés.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

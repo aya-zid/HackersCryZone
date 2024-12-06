@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hackers Cry Zone</title>
+    <style>
+        /* Basic Reset */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            height: 100%;
+            background: url('sea.jpg') no-repeat center center fixed; 
+    background-size: cover;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            padding: 14px 20px;
+            font-size: 18px;
+            display: inline-block;
+        }
+
+        .navbar a:hover {
+            background-color: #1e90ff;
+            color: white;
+        }
+
+        .navbar a.active {
+            background-color: #007bff;
+            color: white;
+        }
+
+        /* Introduction Section */
+        .intro {
+            text-align: center;
+            padding: 70px;
+            background: url('sea.jpg') no-repeat center center fixed; 
+            background-size: cover;
+            color: #fff;
+            background-size: cover;
+            box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .intro h1 {
+            font-size: 3rem;
+            color: #d7e2ed;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .intro p {
+            font-size: 1.2rem;
+            margin-top: 20px;
+            color: #f0f0f0;
+        }
+
+        /* Games Section */
+        .games {
+            padding: 50px 20px;
+            background: url('sea.jpg') no-repeat center center fixed; 
+            background-size: cover;
+        }
+
+        .games h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            color: #d9dee2;
+            margin-bottom: 30px;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+   
+        .game-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .game-card {
+    background: linear-gradient(135deg, #141415, #307eba); /* Ocean Card Gradient */
+    border-radius: 15px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;  /* Stack the content vertically */
+    height: 100%;  /* Make sure the card stretches to fill the available space */
+}
+
+.game-card img {
+    width: 100%;
+    height: 200px;  /* Fixed height for the image */
+    object-fit: contain;  /* Ensure the whole image fits within the container */
+    border-bottom: 3px solid #fff;
+}
+
+.game-card h3 {
+    font-size: 1.5rem;
+    margin: 20px 0;
+    color: #fff;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.game-card p {
+    font-size: 1rem;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.game-card .buttons {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;  /* Center the buttons */
+    gap: 20px;
+}
+
+
+        .game-card button {
+            background-color: #edf0f3;
+            color: rgb(64, 111, 164);
+            border: none;
+            padding: 12px 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 50px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .game-card button:hover {
+            background-color: #062c53;
+            color: rgb(243, 246, 249);
+            transform: scale(1.05);
+        }
+
+        /* Hidden Quiz Window */
+.hidden {
+    display: none;
+}
+
+#quizWindow {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(135deg, #2980b9, #6dd5fa);
+    color: white;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    z-index: 1000;
+    width: 500px; /* Increased width */
+    overflow: hidden;
+    animation: zoomIn 0.5s ease;
+}
+
+.window {
+    position: relative;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.top-left {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.5rem;
+}
+
+.attacker {
+    width: 120px; /* Larger image size */
+    border-radius: 50%;
+    border: 3px solid white;
+}
+
+.emoji {
+    font-size: 3rem;
+}
+
+.content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+#questionText {
+    font-size: 1.5rem; /* Increased font size */
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+#quizButtons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.quiz-btn {
+    background: #f8f8f8;
+    color: rgb(45, 139, 216);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.quiz-btn:hover {
+    background: #f3f6fa;
+    transform: translateY(-3px);
+}
+
+.btn-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    color: white;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Animations */
+@keyframes zoomIn {
+    from {
+        transform: scale(0.8) translate(-50%, -50%);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1) translate(-50%, -50%);
+        opacity: 1;
+    }
+}
+
+@keyframes hackerCry {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes hackerLaugh {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Style for emoji reactions */
+.cryEmoji, .laughEmoji {
+    font-size: 4rem;
+    opacity: 0;
+    animation: none;
+}
+
+.showCry {
+    animation: hackerCry 1s ease forwards;
+}
+
+.showLaugh {
+    animation: hackerLaugh 1s ease forwards;
+}
+.black-container {
+    background-color: black;
+    color: white;
+    border-radius: 15px;  /* Rounded borders */
+    padding: 20px;  /* Padding around the text */
+    width: fit-content; /* Adjust the width to content size */
+    margin: 20px auto;  /* Center the container */
+    text-align: center;  /* Center the text inside */
+}
+/* Navbar Styles */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(90deg, #1a1a1b, #151515);
+    padding: 10px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000; /* Ensure navbar is on top */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.navbar a {
+    color: #f9f4f4;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0 15px;
+    transition: color 0.3s ease-in-out;
+}
+
+.navbar a:hover {
+    color: #ffd700;
+}
+
+.navbar-brand {
+    font-size: 22px;
+    font-weight: 600;
+    color: #fff;
+}
+/* Footer Styles */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    font-size: 18px;
+    margin-top: 50px; /* Ensure there's space between the last card and the footer */
+    width: 100%;
+    box-sizing: border-box; /* Make sure padding doesn't mess with the width */
+}
+
+footer img {
+    cursor: pointer;
+    margin-left: 10px;
+    width: 70px;
+    height: 70px;
+    transition: transform 0.3s ease;
+}
+
+footer img:hover {
+    transform: scale(1.2);
+}
+
+
+        /* Popup Styles */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .popup-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 300px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .popup h2 {
+            color: #e74c3c;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .popup button {
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .popup button:hover {
+            background-color: #27ae60;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-brand">Hacker Cry Zone</div>
+        <div>
+            <a href="/">Home</a>
+            <a href="/contact">Contact Us</a>
+            <a href="/nuitdinfo">Nuit d'Info</a>
+            <a href="/security-tips">Conseils</a>
+            <a href="/myths" style="color: transparent; background-color: transparent; text-decoration: none; pointer-events: auto;">myths</a>
+
+
+        </div>
+    </div>
+
+
+    <!-- Introduction -->
+    <header class="intro" id="about">
+        <h1>Bienvenue dans la Zone de Pleurs des Hackers!</h1>
+        <div class="black-container">
+            <p>
+                Ce site web est votre destination pour apprendre la cybersécurité en vous amusant. <br>
+                Découvrons les secrets des hackers tout en les faisant pleurer à chaudes larmes. 😭💻<br>
+                Prêt(e) à faire tirer les cheveux des hackers ? Rejoignez-nous maintenant !
+            </p>
+        </div>
+        
+    </header>
+
+    <!-- Games Section -->
+    <section class="games" id="games">
+        <h2>Quand les hackers pleurent, vous gagnez !</h2>
+        <div class="games-grid">
+            <!-- Game Cards -->
+            <div class="game-card">
+                <img src="img1.jpg" alt="Game Image">
+                <h3>Hacker-Free Zone</h3>
+                <p>Description 1: Apprenez à créer des mots de passe sécurisés et à protéger vos comptes.</p>
+                <div class="buttons">
+                    <a href="/passwords"><button class="study-btn">Apprendre</button></a>
+                    <a href="/passwordgame"> <button class="play-btn">Faire Pleurer les Hackers</button></a>
+                </div>
+            </div>
+            <div class="game-card">
+                <img src="img2.jpg" alt="Game Image">
+                <h3>Break the Hacker’s Code</h3>
+                <p>Description : Découvrez les bases du phishing de manière ludique et interactive !</p>
+                <div class="buttons">
+                    <a href="/phishing"><button class="study-btn">Apprendre</button></a>
+                    <a href="/phishing-game"> <button class="play-btn">Faire Pleurer les Hackers</button></a>
+                </div>
+            </div>
+            <div class="game-card">
+                <img src="img3.jpg" alt="Game Image">
+                <h3>Hackers: Access Denied</h3>
+                <p>Description : Naviguez en toute sécurité sur les réseaux publics grâce à nos astuces amusantes et interactives ! </p>
+                <div class="buttons">
+                    <a href="/public-network"><button class="study-btn">Apprendre</button></a>
+                    <a href="/public-network-game">
+                    <button class="play-btn">Faire Pleurer les Hackers</button></a>
+                </div>
+            </div>
+            <div class="game-card">
+                <img src="img4.jpg" alt="Game Image">
+                <h3>Turn Hacker Smiles Upside Down</h3>
+                <p>Description : Apprenez à sauvegarder vos données comme un pro, tout en vous amusant !</p>
+
+
+                <div class="buttons">
+                    <a href="/backup"><button class="study-btn">Apprendre</button></a>
+                    <a href="/backup-game"><button class="play-btn">Faire Pleurer les Hackers</button></a>
+                </div>
+            </div>
+            <div class="game-card">
+                <img src="img5.jpg" alt="Game Image">
+                <h3>Hacker Barrier Zone</h3>
+                <p>Description : Apprenez à rester à jour en toute simplicité !</p>
+                <div class="buttons">
+                    <a href="/update"><button class="study-btn">Apprendre</button></a>
+                    <a href="/update-game"><button class="play-btn">Faire Pleurer les Hackers</button></a>
+                </div>
+            </div>
+            <div class="game-card">
+                <img src="img6.jpg" alt="Game Image">
+                <h3>Think Like A Hacker</h3>
+                <p>Description : Penser comme un hacker pour mieux se protéger !</p>
+                <div class="buttons">
+                    <a href="/think-like-a-hacker"><button class="study-btn">Apprendre</button></a>
+                    <a href="/hacker-game"><button class="play-btn">Faire Pleurer les Hackers</button></a>
+                </div>
+            </div>
+        </div>
+    </section>
+ <!-- Footer Section -->
+ <footer>
+    <p>Les hackers ne dorment jamais, mais nous, on les arrête!</p>
+    <img src="virus.png" alt="Virus" id="virus-image" onclick="showVirusPopup()">
+</footer>
+   <!-- Hidden Quiz Window -->
+<div id="quizWindow" class="hidden">
+    <div class="window">
+        <button id="closeWindow" class="btn-close">X</button>
+        <div class="content">
+            <div  id="questionText" ></div>
+            <div id="quizButtons">
+                <button class="quiz-btn" data-answer="yes">Oui</button>
+                <button class="quiz-btn" data-answer="no">Non</button>
+            </div>
+            <div class="reaction-container">
+                <span id="emoji" class="emoji"></span>
+                <img src="attacker.png" alt="Attacker" class="attacker">
+                <div id="hackerLabel">Le Hacker</div> <!-- Text next to attacker -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Popup Window -->
+<div id="virus-popup" class="popup">
+    <div class="popup-content">
+        <h2>Félicitations! Vous avez trouvé un virus!</h2>
+        <p>Activer l'antivirus pour le tuer.</p>
+        <button onclick="activateAntivirus()">Activer l'antivirus</button>
+    </div>
+</div>
+
+<script>
+    // Konami Code Sequence
+const konamiCode = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "b", "a"];
+let konamiIndex = 0;
+
+// References to elements
+const quizWindow = document.getElementById("quizWindow");
+const questionText = document.getElementById("questionText");
+const closeWindow = document.getElementById("closeWindow");
+const emoji = document.getElementById("emoji");
+const quizButtons = document.getElementById("quizButtons");
+const attacker = document.querySelector(".attacker");
+const hackerLabel = document.getElementById("hackerLabel");
+
+// Quiz Questions
+const questions = [
+  { text: "Faut-il partager son mot de passe avec un collègue ?", correct: "no" },
+  { text: "Est-il recommandé d’utiliser un gestionnaire de mots de passe ?", correct: "yes" },
+  { text: "Un mot de passe court est-il sécurisé ?", correct: "no" },
+  { text: "La double authentification (2FA) améliore-t-elle la sécurité ?", correct: "yes" },
+  { text: "Un mot de passe contenant uniquement des chiffres est-il sûr ?", correct: "no" },
+  { text: "Peut-on réutiliser le même mot de passe pour plusieurs comptes ?", correct: "no" },
+  { text: "Est-il sûr d’utiliser des informations personnelles dans un mot de passe ?", correct: "no" },
+  { text: "Les mots de passe aléatoires sont-ils plus sécurisés ?", correct: "yes" },
+  { text: "Changer régulièrement son mot de passe est-il recommandé ?", correct: "yes" },
+  { text: "Les mots de passe doivent-ils être partagés par email ?", correct: "no" },
+  { text: "Est-ce une bonne idée de noter son mot de passe sur un post-it ?", correct: "no" },
+  { text: "Un mot de passe de 8 caractères est-il suffisant aujourd’hui ?", correct: "no" },
+  { text: "Les outils de gestion de mots de passe cryptent-ils vos mots de passe ?", correct: "yes" },
+  { text: "Est-il possible de pirater un mot de passe faible rapidement ?", correct: "yes" },
+  { text: "Le phishing peut-il compromettre vos mots de passe ?", correct: "yes" },
+  { text: "Doit-on vérifier si notre email a été compromis ?", correct: "yes" },
+  { text: "Un mot de passe comme '123456' est-il sécurisé ?", correct: "no" },
+  { text: "L’authentification biométrique est-elle plus sûre ?", correct: "yes" },
+  { text: "Faut-il éviter les réseaux publics pour se connecter à des comptes sensibles ?", correct: "yes" },
+  { text: "La sécurité des mots de passe est-elle essentielle en cybersécurité ?", correct: "yes" }
+];
+
+// Konami Code Listener
+document.addEventListener("keydown", (event) => {
+  if (event.key === konamiCode[konamiIndex]) {
+      konamiIndex++;
+      if (konamiIndex === konamiCode.length) {
+          openQuizWindow();
+          konamiIndex = 0; // Reset the sequence
+      }
+  } else {
+      konamiIndex = 0; // Reset on wrong input
+  }
+});
+
+// Open Quiz Window
+function openQuizWindow() {
+  const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
+  questionText.textContent = randomQuestion.text;
+  quizWindow.dataset.correctAnswer = randomQuestion.correct;
+  quizWindow.classList.remove("hidden");
+}
+
+// Close Quiz Window
+closeWindow.addEventListener("click", () => {
+  quizWindow.classList.add("hidden");
+  emoji.textContent = ""; // Clear emoji
+});
+
+// Handle Button Click
+quizButtons.addEventListener("click", (event) => {
+  if (event.target.classList.contains("quiz-btn")) {
+      const selectedAnswer = event.target.dataset.answer;
+      const correctAnswer = quizWindow.dataset.correctAnswer;
+
+      if (selectedAnswer === correctAnswer) {
+          emoji.textContent = "😢"; // Cry emoji for correct answer
+          attacker.classList.add("showCry");
+          hackerLabel.textContent = "Hacker pleure!"; // Hacker is sad
+      } else {
+          emoji.textContent = "😈"; // Devil emoji for wrong answer
+          attacker.classList.add("showLaugh");
+          hackerLabel.textContent = "Le hacker est heureux !"; // Hacker is happy and ready to hack
+      }
+  }
+});
+
+
+function showVirusPopup() {
+            document.getElementById('virus-popup').style.display = 'flex';
+        }
+
+        function activateAntivirus() {
+            document.getElementById('virus-popup').style.display = 'none';
+            document.getElementById('virus-image').style.display = 'none';
+        }
+  </script>
+</body>
+</html>

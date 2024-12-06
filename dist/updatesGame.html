@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu Quiz </title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background: url(yay.jpg) no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            width:400 px;
+            font-size: 1.2rem;
+        }
+
+        h1 {
+            color: rgb(5, 5, 5);
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+        }
+
+        .question {
+            font-size: 1.3rem;
+            color: rgb(9, 9, 9);
+            margin-bottom: 30px;
+        }
+
+        .quiz-btn {
+            padding: 15px 25px;
+            background-color: #3b8ea5;
+            color: white;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .quiz-btn:hover {
+            background-color: #29869d;
+        }
+
+        .quiz-btn:active {
+            background-color: #1c5e6d;
+        }
+
+        .radio-btn {
+            margin-top: 15px;
+            margin-bottom: 20px;
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        .popup {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 12px;
+            color: white;
+            display: none;
+            text-align: center;
+        }
+
+        .happy {
+            background-color: #2ecc71;
+        }
+
+        .sad {
+            background-color: #e74c3c;
+        }
+
+        .popup-btn {
+            background-color: #3498db;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            color: white;
+            border: none;
+            font-size: 1.2rem;
+            margin-top: 20px;
+        }
+
+        .popup-btn:hover {
+            background-color: #2980b9;
+        }
+
+        .popup-btn:active {
+            background-color: #1d6e8b;
+        }
+
+        .emoji {
+            font-size: 3rem;
+            margin-top: 20px;
+        }
+            /* Navbar Styles */
+    .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(90deg, #29869d, #eef0f2);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar a {
+            color: #201e1e;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            margin: 0 15px;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .navbar a:hover {
+            color: #ffd700;
+        }
+
+        .navbar-brand {
+            font-size: 22px;
+            font-weight: 600;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-brand">Hacker Cry Zone</div>
+        <div>
+            <a href="/">Home</a>
+            <a href="/contact">Contact Us</a>
+            <a href="/nuitdinfo">Nuit d'Info</a>
+            <a href="/security-tips">Conseils</a>
+            <a href="/myths" style="color: transparent; background-color: transparent; text-decoration: none; pointer-events: auto;">myths</a>
+
+        </div>
+    </div>
+    <div class="container">
+        <h1>Jeu Quiz</h1>
+        <div class="question">Est-il important de mettre à jour régulièrement le logiciel antivirus ?</div>
+        
+        <div class="radio-btn">
+            <input type="radio" id="yes" name="answer" value="yes">
+            <label for="yes"><left>Oui, pour garantir la protection contre les nouvelles menaces.</left></label>
+        </div>
+        
+        <div class="radio-btn">
+            <input type="radio" id="no" name="answer" value="no">
+            <label for="no"><left>Non, ce n'est pas nécessaire.</left></label>
+        </div>
+        
+        <button class="quiz-btn" onclick="checkAnswer()">Soumettre la réponse</button>
+    </div>
+
+    <div id="popup" class="popup happy">
+        <h2>Vous avez gagné !</h2>
+        <p>Félicitations ! Vous connaissiez la réponse !</p>
+        <span class="emoji">😊</span>
+        <button class="popup-btn" onclick="closePopup()">Fermer</button>
+    </div>
+
+    <div id="popup-sad" class="popup sad">
+        <h2>Vous avez perdu !</h2>
+        <p>Oups, mieux vaut la prochaine fois !</p>
+        <span class="emoji">😢</span>
+        <button class="popup-btn" onclick="closePopup()">Fermer</button>
+    </div>
+</body>
+</html>
+
+
+    <script>
+        // Fonction pour vérifier la réponse de l'utilisateur
+        function checkAnswer() {
+            // Obtenir le bouton radio sélectionné
+            const selectedAnswer = document.querySelector('input[name="answer"]:checked');
+    
+            // Vérifier si l'utilisateur a sélectionné une réponse
+            if (!selectedAnswer) {
+                alert("Veuillez sélectionner une réponse.");
+                return;
+            }
+    
+            // Vérifier la réponse sélectionnée et afficher le popup approprié
+            const correctAnswer = "yes";  // La réponse correcte est 'Oui, pour garantir la protection contre les nouvelles menaces.'
+            const popup = document.getElementById("popup");
+            const popupSad = document.getElementById("popup-sad");
+    
+            if (selectedAnswer.value === correctAnswer) {
+                popup.style.display = "block";  // Afficher le popup "Vous avez gagné"
+                popupSad.style.display = "none";  // Cacher le popup "Vous avez perdu"
+            } else {
+                popupSad.style.display = "block";  // Afficher le popup "Vous avez perdu"
+                popup.style.display = "none";  // Cacher le popup "Vous avez gagné"
+            }
+        }
+    
+        // Fonction pour fermer le popup
+        function closePopup() {
+            // Cacher les deux popups lorsque le bouton fermer est cliqué
+            const popup = document.getElementById("popup");
+            const popupSad = document.getElementById("popup-sad");
+            popup.style.display = "none";
+            popupSad.style.display = "none";
+        }
+    </script>
+    
+    
+</body>
+</html>
